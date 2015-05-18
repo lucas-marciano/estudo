@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br" ng-app ng-init="valor1 = 5; valor2 = 10; pessoa={nome: 'lucas marciano', idade:25}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script type="text/javascript" src="js/angular-1.3.15/angular.min.js"></script>
+        <script type="text/javascript" src="js/aula05.module.js"></script>
+        <title>Exemplo 05 - Modulos</title>
+    </head>
 
-    <title>Exemplo 05 - Modulos</title>
-</head>
-
-<body>
-	<!-- -Uma aplicação criada usando Angular não possui método principal;
-		 - Dessa forma podemos imaginar a nossa aplicação como sendo um conjunto de pequenas apps;
-		 - Cada pequena aplicação é um módulo e se liga a diretiva ng-app. -->
-	<div ng-app="appSaudacao">
-		Aplicação de saudação
-	</div>
-	<div>
-		Aplicação de mensagem
-	</div>
-	
-</body>
-	<script type="text/javascript" src="js/angular-1.3.15/angular.min.js"></script>	
-    <script type="text/javascript" src="aula05.module.js"></script>
+    <body>
+        <!-- -Uma aplicação criada usando Angular não possui método principal;
+             - Dessa forma podemos imaginar a nossa aplicação como sendo um conjunto de pequenas apps;
+             - Cada pequena aplicação é um módulo e se liga a diretiva ng-app. -->
+        <div ng-app="appSaudacao">
+            <!--O pipeline | faz a passagem de paramentro para o filtro.-->
+            {{'Lucas Marciano' | ola}}
+        </div>
+        
+        
+       
+    </body>
 </html>

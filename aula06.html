@@ -1,24 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br" ng-app ng-init="valor1 = 5; valor2 = 10; pessoa={nome: 'lucas marciano', idade:25}">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/angular-1.3.15/angular.min.js"></script>	
-    <title>Exemplo 04 - ngBind</title>
+    <title>Exemplo 06 - Controllers e métodos</title>
 </head>
 
 <body>
-	<!--NgBind essa ferramenta propaga em toda a aplicação o valor de uma variável, ou seja,
-	se esta variável  estiver send usada na interface ela será atualizada automaticamente.-->
-	<h1 ng-bind="valor1"></h1>
-	<h1 ng-bind="valor1 + valor2"></h1>
-	<!--Outra forma de fazer o bind-->
-	{{valor1 +valor2}}<br>
-	<!--Pode-se criar novas tags-->
-	<texto ng-bind="valor1"></texto>
-
-	<h1>Seja bem vindo {{pessoa.nome}}.</h1>
-
-	<input type="text" ng-model="pessoa.nome"/>
+	<!---->
 </body>
 </html>

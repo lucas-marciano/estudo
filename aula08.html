@@ -3,22 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <style>
+        /*Esse css faz a validação do campo, o ng-touched é acionado quando o campo for selecionado.*/
+        input.ng-invalid.ng-touched{
+            background: red;
+            color: #ffffff;
+        }
+        
+        input.ng-valid.ng-touched{
+            background: green;
+            color: #ffffff;
+        }
+    </style>
     <title>Exemplo 08 - Trabalhando com formulários</title>
 </head>
 
 <body ng-controller="aula08Controller">
 	<!--
-       
+       Primeira forma de link com formulário
     -->
-    <form novalidate>
-        Nome: <input type="text" required><br>
-        E-mail: <input type="email" required><br>
-        Sexo: <input type="radio" value="M">Masculino
-              <input type="radio" value="F">Feminino
+    <form name="formulario" novalidate ng-submit="salvarPessoa(pessoa)">
+        Nome    :   <input name="nome_campo" type="text" required ng-model="pessoa.nome">
+        
+        <div ng-show="formulario.$submitted && formulario.nome_campo.$touched">
+            <div ng-show="formulario.nome_campo.$error.required">
+                O campo nome deve ser preenchido!
+            </div>
+        </div>
+        
         <br>
-        <button ng-click="">Salvar</button>
-        <button ng-click="">Resetar</button>
+        E-mail  :   <input name="email_campo" type="email" required ng-model="pessoa.email">
+        
+        <div ng-show="formulario.$submitted && formulario.email_campo.$touched">
+            <div ng-show="formulario.email_campo.$error.required">
+                O campo email deve ser preenchido!
+            </div>
+            <div ng-show="formulario.email_campo.$error.email">
+                O campo email deve ser preenchido corretamente!
+            </div>
+        </div>
+        
+        <br>
+        Sexo    :   <input type="radio" value="M" ng-model="pessoa.sexo">Masculino
+                    <input type="radio" value="F" ng-model="pessoa.sexo">Feminino<br><br>
+        Estado  :
+        <select ng-model="pessoa.estado">
+            <option ng-repeat="estado in estados" value="{{estado}}" ng-selected={{estado==pessoa.estado}}>{{estado}}</option>
+        </select>
+        <!--o comando ng-selected={{estado==pessoa.estado}} serve para colocar uma opção como padrão-->
+        <!--ng-repeat: serve para selecionar os elementos de um array que vem do controller-->
+        <br><br>
+        <input type="submit" value="Salvar" ng-click="ver()" ng-disabled="formulario.$invalid">
+        
+        
+        <!-- Cria um objeto json 
+        <pre>
+            {{pessoa| json}}
+        </pre>-->
+        
+        <pre ng-show="visualizar">
+            {{pessoas | json}}
+        </pre>
     </form>
     
     
